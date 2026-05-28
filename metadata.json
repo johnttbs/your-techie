@@ -1,0 +1,6 @@
+{
+  "name": "Your Techie Hub",
+  "description": "A practical and growth-focused Tech Academy helping aspiring tech professionals transition into tech through hands-on learning, projects, mentorship, and community support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
