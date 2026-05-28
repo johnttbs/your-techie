@@ -1,16 +1,49 @@
-import React from "react";
-import { ArrowUpRight, ShieldCheck, Milestone, Compass, Target, HeartHandshake, Eye } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { ArrowUpRight, ShieldCheck, Milestone, Compass, Target, HeartHandshake, Eye, Camera, RefreshCw } from "lucide-react";
 
 export default function AboutUs() {
+  const [photoUrl, setPhotoUrl] = useState<string>("/src/assets/images/founder_mary_ajayi_actual_1779990187218.png");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Load custom photo from localStorage if present
+  useEffect(() => {
+    const saved = localStorage.getItem("founder_photo_cache");
+    if (saved) {
+      setPhotoUrl(saved);
+    }
+  }, []);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        localStorage.setItem("founder_photo_cache", base64String);
+        setPhotoUrl(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleResetPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    localStorage.removeItem("founder_photo_cache");
+    setPhotoUrl("/src/assets/images/founder_mary_ajayi_actual_1779990187218.png");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
   return (
     <section id="who-we-are" className="py-24 bg-[#FAF9F6] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* UPPER PART: WHO WE ARE (Slide 2 equivalent) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-20">
           
           {/* Left Panel: Deep Navy bold presentation (mimicking slide 2 left side) */}
-          <div className="lg:col-span-5 bg-brand-navy rounded-3xl p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[350px]">
+          <div className="lg:col-span-3 bg-brand-navy rounded-3xl p-6 sm:p-8 text-white flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[350px]">
             {/* Corner pattern */}
             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-brand-orange/10 border border-brand-orange/20" />
             
@@ -24,10 +57,10 @@ export default function AboutUs() {
             </div>
 
             <div className="my-8 z-10">
-              <h2 className="text-4xl sm:text-5xl font-black font-display tracking-tight leading-none mb-4">
+              <h2 className="text-3xl sm:text-4xl font-black font-display tracking-tight leading-none mb-4">
                 Who We <br />Are
               </h2>
-              <div className="h-1 w-20 bg-brand-orange rounded-full" />
+              <div className="h-1 w-16 bg-brand-orange rounded-full" />
             </div>
 
             <div className="flex items-center gap-3 z-10 border-t border-white/10 pt-4">
@@ -36,23 +69,84 @@ export default function AboutUs() {
             </div>
           </div>
 
+          {/* Middle Panel: Founder Spotlight Portrait Card with Interactive File Upload */}
+          <div className="lg:col-span-4 rounded-3xl overflow-hidden relative group shadow-xl border border-gray-100 bg-white min-h-[350px] flex flex-col justify-end">
+            <img
+              src={photoUrl}
+              alt="Mary Ajayi - Founder of Your Techie Hub"
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            {/* Elegant overlay gradient for high readability of metadata at the bottom */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 transition-opacity duration-300 pointer-events-none" />
+            
+            {/* Direct interactive controls to change the picture */}
+            <div className="absolute top-4 right-4 z-20 flex gap-2">
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className="w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white flex items-center justify-center transition-all shadow-md group/btn cursor-pointer"
+                title="Upload/Select your exact attached picture"
+              >
+                <Camera className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+              </button>
+              {localStorage.getItem("founder_photo_cache") && (
+                <button
+                  onClick={handleResetPhoto}
+                  className="w-10 h-10 rounded-full bg-red-600/80 hover:bg-red-600 backdrop-blur-sm text-white flex items-center justify-center transition-all shadow-md group/btn cursor-pointer"
+                  title="Reset to default picture"
+                >
+                  <RefreshCw className="w-4 h-4 group-hover/btn:rotate-45 transition-transform" />
+                </button>
+              )}
+            </div>
+
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              accept="image/*"
+              className="hidden"
+              id="founder-photo-upload"
+            />
+
+            {/* Instruction badge in preview */}
+            <div className="absolute inset-x-4 top-16 bg-black/75 backdrop-blur-sm rounded-xl p-3 text-center opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300 z-10 border border-white/10">
+              <p className="text-[11px] text-white font-medium leading-tight">
+                Click the <Camera className="w-3 h-3 inline pb-0.5" /> icon above to upload your exact attached picture file!
+              </p>
+            </div>
+
+            {/* Card Information at bottom */}
+            <div className="p-6 z-10 text-white relative">
+              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest bg-brand-orange/20 border border-brand-orange/30 px-2 py-1 rounded-md inline-block mb-2 font-mono">
+                Leadership
+              </span>
+              <h4 className="text-xl font-black font-display tracking-tight leading-none mb-1 text-white">
+                Mary Ajayi
+              </h4>
+              <p className="text-xs text-white/80 font-medium font-sans">
+                Founder &amp; Academy Director
+              </p>
+            </div>
+          </div>
+
           {/* Right Panel: Content details with tagline in quote (mimicking slide 2 right side) */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-8 bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100">
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-6 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100">
             <div>
               <span className="text-xs font-black uppercase tracking-wider text-brand-orange">
                 Our Tagline
               </span>
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-1 font-display">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy mt-1 font-display">
                 &ldquo;Be a Techie&rdquo;
               </h3>
             </div>
 
-            <div className="space-y-6 text-gray-700 text-base leading-relaxed">
-              <p className="font-semibold text-brand-navy text-lg border-l-4 border-brand-orange pl-4 bg-orange-50/50 py-2 rounded-r">
-                Your Techie Hub is a practical Tech Academy focused on helping aspiring tech professionals transition into tech through hands-on learning, mentorship, and real-world projects.
+            <div className="space-y-4 text-gray-700 text-sm leading-relaxed">
+              <p className="font-semibold text-brand-navy text-base border-l-4 border-brand-orange pl-4 bg-orange-50/55 py-1.5 rounded-r">
+                Your Techie Hub is a practical Tech Academy focused on helping aspiring professionals transition into tech through hands-on learning, elite mentorship, and real-world projects.
               </p>
               <p>
-                We focus on helping aspiring tech professionals transition into tech through hands-on learning, projects, mentorship, and community support. By pairing direct career training with project environments, we guide you every step of the way from complete novice to industry readiness.
+                We guide complete beginners and tech aspirants with project environments and career training, ensuring every step is fully supported towards standard real-world requirements.
               </p>
             </div>
 
@@ -60,15 +154,15 @@ export default function AboutUs() {
               <div className="flex items-start gap-2.5">
                 <ShieldCheck className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm text-brand-navy">100% Practical</h4>
-                  <p className="text-xs text-gray-500">Live projects and real cloud setups</p>
+                  <h4 className="font-bold text-xs sm:text-sm text-brand-navy">100% Practical</h4>
+                  <p className="text-[11px] text-gray-500 leading-tight">Live labs &amp; cloud setups</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Milestone className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm text-brand-navy">Career Pathing</h4>
-                  <p className="text-xs text-gray-500 font-sans">Resume audits and job prep</p>
+                  <h4 className="font-bold text-xs sm:text-sm text-brand-navy">Career Support</h4>
+                  <p className="text-[11px] text-gray-500 leading-tight font-sans">Mentoring &amp; job prep</p>
                 </div>
               </div>
             </div>
