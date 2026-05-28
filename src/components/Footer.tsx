@@ -144,8 +144,8 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <span className="block font-bold text-white text-[11px] leading-tight uppercase font-mono">SUPPORT PHONE</span>
-                  <a href="tel:+12404217887" className="block hover:text-brand-orange transition-colors">+1 (240) 421 7887</a>
-                  <a href="tel:+2347063822743" className="block hover:text-brand-orange transition-colors">+234 706 382 2743</a>
+                  <a href="tel:+12404217887" className="block hover:text-brand-orange transition-colors">+1 (240) 421 7887 (US Support)</a>
+                  <a href="tel:+2348101963400" className="block hover:text-brand-orange transition-colors">+234 810 196 3400 (Local / WhatsApp)</a>
                 </div>
               </div>
 

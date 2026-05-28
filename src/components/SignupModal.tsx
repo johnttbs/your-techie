@@ -75,7 +75,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
         email: "olatunbosunjohn@gmail.com",
         background: "Beginner",
         track: "DevOps Engineering",
-        telegram: "+234 706 382 2743",
+        telegram: "+234 810 196 3400",
         referredBy: "Chinonso Ndubuisi",
       });
 
