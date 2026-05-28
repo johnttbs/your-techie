@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Logo from "./Logo";
-import { Mail, Phone, ExternalLink, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Mail, Phone, ExternalLink, Linkedin, Facebook, Instagram, Music2 } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -96,14 +96,17 @@ export default function Footer() {
             </p>
             {/* Social handles */}
             <div className="flex items-center gap-3">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white flex items-center justify-center text-white/70 border border-white/5 hover:border-brand-orange/35 transition-all active:scale-90" title="LinkedIn">
+              <a href="https://www.linkedin.com/company/yourtechiehub/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white flex items-center justify-center text-white/70 border border-white/5 hover:border-brand-orange/35 transition-all active:scale-90" title="LinkedIn">
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white flex items-center justify-center text-white/70 border border-white/5 hover:border-brand-orange/35 transition-all active:scale-90" title="Twitter">
-                <Twitter className="w-4 h-4" />
+              <a href="https://www.facebook.com/yourtechiehub" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white flex items-center justify-center text-white/70 border border-white/5 hover:border-brand-orange/35 transition-all active:scale-90" title="Facebook">
+                <Facebook className="w-4 h-4" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white flex items-center justify-center text-white/70 border border-white/5 hover:border-brand-orange/35 transition-all active:scale-90" title="Instagram">
+              <a href="https://instagram.com/yourtechiehub" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white flex items-center justify-center text-white/70 border border-white/5 hover:border-brand-orange/35 transition-all active:scale-90" title="Instagram">
                 <Instagram className="w-4 h-4" />
+              </a>
+              <a href="https://www.tiktok.com/@yourtechie_hub" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white flex items-center justify-center text-white/70 border border-white/5 hover:border-brand-orange/35 transition-all active:scale-90" title="TikTok">
+                <Music2 className="w-4 h-4" />
               </a>
             </div>
           </div>
