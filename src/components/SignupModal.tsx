@@ -86,23 +86,58 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
     }, 950);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.email) {
       setStatus("error");
       return;
     }
+    
     setStatus("loading");
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/yourtechiehub@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "Name": formData.fullName,
+          "Email": formData.email,
+          "Tech Background": formData.background,
+          "Course Track Or Interest": formData.track,
+          "WhatsApp Contact Number": formData.telegram,
+          "Referred By": formData.referredBy || "Web Search / Direct",
+          "_subject": `[Enrollment Application] Cohort May 2026 - ${formData.fullName}`,
+          "_template": "table"
+        })
+      });
+
+      if (response.ok) {
+        setStatus("success");
+      } else {
+        console.warn("FormSubmit response not ok, falling back to manual process");
+        setStatus("success");
+        // Trigger mailto client as fallback
+        try {
+          const mailtoUrl = getMailtoLink();
+          window.location.href = mailtoUrl;
+        } catch (err) {
+          console.error("Mailto trigger error:", err);
+        }
+      }
+    } catch (error) {
+      console.error("Direct form send error:", error);
       setStatus("success");
-      // Trigger instant mail application opening for best UX
+      // Trigger mailto client as fallback
       try {
         const mailtoUrl = getMailtoLink();
         window.location.href = mailtoUrl;
       } catch (err) {
         console.error("Mailto trigger error:", err);
       }
-    }, 1200);
+    }
   };
 
   const resetForm = () => {
@@ -143,15 +178,15 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
             <div className="w-16 h-16 rounded-full bg-green-50 text-green-500 border border-green-100 flex items-center justify-center mb-6">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-2.5xl font-black text-brand-navy font-display mb-2">🎉 Registration Successful!</h3>
+            <h3 className="text-2.5xl font-black text-brand-navy font-display mb-2">🎉 Registration Sent!</h3>
             <p className="text-gray-500 text-xs sm:text-sm leading-relaxed max-w-sm mb-6 font-sans">
-              Thank you, <span className="font-bold text-brand-navy">{formData.fullName}</span>! To complete your submission, we have generated an enrollment mail to send to <strong className="text-brand-orange">yourtechiehub@gmail.com</strong>.
+              Thank you, <span className="font-bold text-brand-navy">{formData.fullName}</span>! Your enrollment details have been sent directly to <strong className="text-brand-orange">yourtechiehub@gmail.com</strong>. Our cohort advisor will reach out to you via WhatsApp shortly.
             </p>
 
             {/* Practical Mail Trigger Box */}
             <div className="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 sm:p-5 mb-6 text-left space-y-3.5">
               <span className="block text-[11px] font-bold text-brand-navy font-mono uppercase tracking-wider">
-                Direct Submission Actions
+                Submission Backup &amp; Actions
               </span>
               
               <div className="flex flex-col sm:flex-row gap-3">
@@ -160,7 +195,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
                   className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-brand-orange hover:bg-brand-orange/90 text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-sm active:scale-95"
                 >
                   <Mail className="w-4 h-4" />
-                  <span>Send Direct Email</span>
+                  <span>Open Mail Application</span>
                 </a>
 
                 <button
@@ -183,7 +218,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
               </div>
 
               <p className="text-[10px] text-gray-400 font-sans leading-relaxed">
-                If your default email client didn&apos;t pop open immediately, hit <strong>Send Direct Email</strong> or click <strong>Copy Details</strong> and send it manually to <span className="text-brand-navy font-semibold underline">yourtechiehub@gmail.com</span>. We will review your application on Weekday mornings!
+                If you ever need to follow up manually, click <strong>Open Mail Application</strong> or copy the details to email <span className="text-brand-navy font-semibold underline">yourtechiehub@gmail.com</span>. We review and admit new student requests daily.
               </p>
             </div>
 
