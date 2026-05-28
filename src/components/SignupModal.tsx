@@ -127,7 +127,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       />
 
       {/* Main Card Frame */}
-      <div className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-2xl w-full max-w-lg z-10 relative select-text">
+      <div className="bg-white rounded-3xl border border-gray-100 shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto z-10 relative select-text">
         {/* Right Corner exit */}
         <button
           onClick={resetForm}
@@ -352,7 +352,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
                 disabled={status === "loading"}
                 className="w-full bg-brand-orange hover:bg-brand-orange/95 text-white font-extrabold py-4 px-6 rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 mt-6 cursor-pointer"
               >
-                <span>{status === "loading" ? "Processing entry..." : "Confirm Enrollment"}</span>
+                <span>{status === "loading" ? "Processing application..." : "Submit Application"}</span>
                 <Send className="w-4 h-4 text-white" />
               </button>
 
