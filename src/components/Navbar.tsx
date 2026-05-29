@@ -54,7 +54,18 @@ export default function Navbar({ onRegisterClick }: NavbarProps) {
             Get tech insights, career tips &amp; digital skills updates from Your Techie Hub.
           </span>
           <button
-            onClick={onRegisterClick}
+            onClick={() => {
+              const element = document.querySelector("#footer");
+              if (element) {
+                const offset = 90;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth",
+                });
+              }
+            }}
             className="inline-flex items-center gap-1 text-[10px] sm:text-xs uppercase bg-white text-brand-navy hover:bg-brand-navy hover:text-white px-2.5 py-0.5 rounded-full font-bold transition-all duration-300 shadow-sm border border-transparent whitespace-nowrap active:scale-95"
           >
             Join Our Newsletter

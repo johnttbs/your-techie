@@ -1,40 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, ShieldCheck, Milestone, Compass, Target, HeartHandshake, Eye, Camera, RefreshCw } from "lucide-react";
+import React from "react";
+import { ArrowUpRight, ShieldCheck, Milestone, Compass, Target, HeartHandshake, Eye } from "lucide-react";
 
 export default function AboutUs() {
-  const [photoUrl, setPhotoUrl] = useState<string>("/src/assets/images/founder_mary_ajayi_actual_1779990187218.png");
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Load custom photo from localStorage if present
-  useEffect(() => {
-    const saved = localStorage.getItem("founder_photo_cache");
-    if (saved) {
-      setPhotoUrl(saved);
-    }
-  }, []);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        localStorage.setItem("founder_photo_cache", base64String);
-        setPhotoUrl(base64String);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleResetPhoto = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    localStorage.removeItem("founder_photo_cache");
-    setPhotoUrl("/src/assets/images/founder_mary_ajayi_actual_1779990187218.png");
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
-  };
-
   return (
     <section id="who-we-are" className="py-24 bg-[#FAF9F6] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,53 +36,17 @@ export default function AboutUs() {
             </div>
           </div>
 
-          {/* Middle Panel: Founder Spotlight Portrait Card with Interactive File Upload */}
+          {/* Middle Panel: Founder Spotlight Portrait Card */}
           <div className="lg:col-span-4 rounded-3xl overflow-hidden relative group shadow-xl border border-gray-100 bg-white min-h-[350px] flex flex-col justify-end">
             <img
-              src={photoUrl}
+              src="/src/assets/images/mary_ajayi.png"
               alt="Mary Ajayi - Founder of Your Techie Hub"
               referrerPolicy="no-referrer"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             {/* Elegant overlay gradient for high readability of metadata at the bottom */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 transition-opacity duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none" />
             
-            {/* Direct interactive controls to change the picture */}
-            <div className="absolute top-4 right-4 z-20 flex gap-2">
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white flex items-center justify-center transition-all shadow-md group/btn cursor-pointer"
-                title="Upload/Select your exact attached picture"
-              >
-                <Camera className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-              </button>
-              {localStorage.getItem("founder_photo_cache") && (
-                <button
-                  onClick={handleResetPhoto}
-                  className="w-10 h-10 rounded-full bg-red-600/80 hover:bg-red-600 backdrop-blur-sm text-white flex items-center justify-center transition-all shadow-md group/btn cursor-pointer"
-                  title="Reset to default picture"
-                >
-                  <RefreshCw className="w-4 h-4 group-hover/btn:rotate-45 transition-transform" />
-                </button>
-              )}
-            </div>
-
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileChange}
-              accept="image/*"
-              className="hidden"
-              id="founder-photo-upload"
-            />
-
-            {/* Instruction badge in preview */}
-            <div className="absolute inset-x-4 top-16 bg-black/75 backdrop-blur-sm rounded-xl p-3 text-center opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300 z-10 border border-white/10">
-              <p className="text-[11px] text-white font-medium leading-tight">
-                Click the <Camera className="w-3 h-3 inline pb-0.5" /> icon above to upload your exact attached picture file!
-              </p>
-            </div>
-
             {/* Card Information at bottom */}
             <div className="p-6 z-10 text-white relative">
               <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest bg-brand-orange/20 border border-brand-orange/30 px-2 py-1 rounded-md inline-block mb-2 font-mono">
