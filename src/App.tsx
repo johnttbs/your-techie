@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import AboutUs from "./components/AboutUs";
+import PictureGallery from "./components/PictureGallery";
 import FocusAreas from "./components/FocusAreas";
 import FutureGoals from "./components/FutureGoals";
 import AlumniNetwork from "./components/AlumniNetwork";
@@ -51,6 +52,9 @@ export default function App() {
 
         {/* Detailed Wholesome Presentation of slide 2 & 3 content */}
         <AboutUs />
+
+        {/* Premium Interactive Photo Gallery of real classroom and leadership pictures */}
+        <PictureGallery />
 
         {/* Specialized Tracks Focus (Slide 4 content) */}
         <FocusAreas />
