@@ -12,13 +12,6 @@ interface GalleryPhoto {
 
 const galleryPhotos: GalleryPhoto[] = [
   {
-    src: "/src/assets/images/mary_ajayi_1780037096227.png",
-    category: "DevOps Learning Lab",
-    title: "Practical Learning Lab",
-    badge: "Lab Workspace",
-    description: "Mary Ajayi in the physical classroom workspace, designing comprehensive learning paths with the physical DevOps architecture board."
-  },
-  {
     src: "/src/assets/images/mary_uploaded.png",
     category: "Strategic Direction",
     title: "Academy Directing & Standards",
@@ -90,7 +83,7 @@ export default function PictureGallery() {
         </div>
 
         {/* Cohesive Bento-Style Portait Photo Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {galleryPhotos.map((photo, idx) => (
             <motion.div
               key={idx}
