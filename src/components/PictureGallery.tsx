@@ -19,21 +19,21 @@ const galleryPhotos: GalleryPhoto[] = [
     description: "Mary Ajayi in the physical classroom workspace, designing comprehensive learning paths with the physical DevOps architecture board."
   },
   {
-    src: "/src/assets/images/founder_mary_ajayi_actual_1779990187218.png",
+    src: "/src/assets/images/mary_uploaded.png",
     category: "Strategic Direction",
     title: "Academy Directing & Standards",
     badge: "Leadership",
     description: "Formulating premium curriculums, building trusted pathways, and driving engineering perfection at Your Techie Hub."
   },
   {
-    src: "/src/assets/images/founder_mary_ajayi_1779989904373.png",
+    src: "/src/assets/images/mary1_uploaded.png",
     category: "Elite Mentoring",
     title: "Personalized Strategy Sessions",
     badge: "Mentorship",
     description: "Guiding transition students from non-technical backgrounds with direct, welcoming advice and structured roadmaps."
   },
   {
-    src: "/src/assets/images/mary_ajayi.png",
+    src: "/src/assets/images/mary_pic4_uploaded.png",
     category: "Industry Alignments",
     title: "Global Enterprise Linkages",
     badge: "Networking",

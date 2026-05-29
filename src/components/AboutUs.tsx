@@ -10,7 +10,7 @@ export default function AboutUs() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-20">
           
           {/* Left Panel: Deep Navy bold presentation (mimicking slide 2 left side) */}
-          <div className="lg:col-span-4 bg-brand-navy rounded-3xl p-8 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[350px]">
+          <div className="lg:col-span-3 bg-brand-navy rounded-3xl p-6 sm:p-8 text-white flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[350px]">
             {/* Corner pattern */}
             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-brand-orange/10 border border-brand-orange/20" />
             
@@ -23,8 +23,8 @@ export default function AboutUs() {
               </div>
             </div>
 
-            <div className="my-12 z-10">
-              <h2 className="text-4xl sm:text-5xl font-black font-display tracking-tight leading-none mb-4">
+            <div className="my-8 z-10">
+              <h2 className="text-3xl sm:text-4xl font-black font-display tracking-tight leading-none mb-4">
                 Who We <br />Are
               </h2>
               <div className="h-1.5 w-16 bg-brand-orange rounded-full" />
@@ -36,39 +36,82 @@ export default function AboutUs() {
             </div>
           </div>
 
+          {/* Middle Panel: Founder Spotlight Portrait Card using the newly uploaded picture */}
+          <div 
+            className="lg:col-span-4 rounded-3xl overflow-hidden relative group shadow-xl border border-gray-100 bg-[#121212] min-h-[420px] flex flex-col justify-end select-none"
+          >
+            {/* Image of Mary Ajayi - referenced securely with referrerPolicy */}
+            <img
+              src="/src/assets/images/mary_ajayi_who_we_are.png"
+              alt="Mary Ajayi - Founder of Your Techie Hub"
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105"
+            />
+            
+            {/* Elegant overlay gradient to guarantee rich text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none z-10" />
+            
+            {/* Contact or status indicator */}
+            <div className="absolute top-4 left-4 z-20">
+              <span className="bg-brand-navy/95 backdrop-blur-xs text-white border border-white/10 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm font-sans flex items-center gap-1.5">
+                <span className="w-2 h-2 bg-brand-orange rounded-full animate-pulse" />
+                Founder Spotlight
+              </span>
+            </div>
+
+            {/* Card Information */}
+            <div className="p-6 z-10 text-white relative">
+              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest bg-brand-orange/20 border border-brand-orange/30 px-2.5 py-0.5 rounded-md inline-block mb-2 font-mono">
+                Leadership
+              </span>
+              
+              <h4 className="text-2xl font-black font-display tracking-tight leading-none mb-1 text-white">
+                Mary Ajayi
+              </h4>
+              <p className="text-xs text-white/95 font-medium font-sans mb-3">
+                Founder &amp; Academy Director
+              </p>
+
+              {/* Founder description line */}
+              <p className="text-[11px] text-white/70 leading-relaxed font-sans line-clamp-2">
+                Driving elite educational standards and solid practical DevOps/Cloud training pathways at Your Techie Hub.
+              </p>
+            </div>
+          </div>
+
           {/* Right Panel: Content details with tagline in quote (mimicking slide 2 right side) */}
-          <div className="lg:col-span-8 flex flex-col justify-center space-y-8 bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100">
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-6 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 font-sans">
             <div>
-              <span className="text-xs font-black uppercase tracking-wider text-brand-orange">
+              <span className="text-xs font-black uppercase tracking-wider text-brand-orange font-sans">
                 Our Tagline
               </span>
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-1 font-display">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy mt-1 font-display">
                 &ldquo;Be a Techie&rdquo;
               </h3>
             </div>
 
-            <div className="space-y-4 text-gray-700 text-base sm:text-lg leading-relaxed">
-              <p className="font-semibold text-brand-navy text-lg sm:text-xl border-l-4 border-brand-orange pl-4 bg-orange-50/55 py-2.5 rounded-r">
+            <div className="space-y-4 text-gray-700 text-sm leading-relaxed">
+              <p className="font-semibold text-brand-navy text-base border-l-4 border-brand-orange pl-4 bg-orange-50/55 py-1.5 rounded-r font-sans">
                 Your Techie Hub is a practical Tech Academy focused on helping aspiring professionals transition into tech through hands-on learning, elite mentorship, and real-world projects.
               </p>
-              <p className="text-gray-600 text-sm sm:text-base">
+              <p className="text-gray-600 text-xs sm:text-sm font-sans">
                 We guide complete beginners and tech aspirants with project environments and career training, ensuring every step is fully supported towards standard real-world requirements.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-gray-100">
-              <div className="flex items-start gap-3.5">
-                <ShieldCheck className="w-6 h-6 text-brand-orange shrink-0 mt-0.5" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-gray-100">
+              <div className="flex items-start gap-2.5">
+                <ShieldCheck className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm sm:text-base text-brand-navy">100% Practical</h4>
-                  <p className="text-xs sm:text-sm text-gray-500 leading-normal">Live labs &amp; cloud setups</p>
+                  <h4 className="font-bold text-xs sm:text-sm text-brand-navy">100% Practical</h4>
+                  <p className="text-[11px] text-gray-500 leading-tight">Live labs &amp; cloud setups</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3.5">
-                <Milestone className="w-6 h-6 text-brand-orange shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5">
+                <Milestone className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm sm:text-base text-brand-navy font-sans">Career Support</h4>
-                  <p className="text-xs sm:text-sm text-gray-500 leading-normal font-sans">Mentoring &amp; job prep</p>
+                  <h4 className="font-bold text-xs sm:text-sm text-brand-navy font-sans">Career Support</h4>
+                  <p className="text-[11px] text-gray-500 leading-tight font-sans">Mentoring &amp; job prep</p>
                 </div>
               </div>
             </div>
