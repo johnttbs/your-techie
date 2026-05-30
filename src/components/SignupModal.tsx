@@ -110,6 +110,8 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
           "WhatsApp Contact Number": formData.telegram,
           "Referred By": formData.referredBy || "Web Search / Direct",
           "_subject": `[Enrollment Application] Cohort May 2026 - ${formData.fullName}`,
+          "_replyto": formData.email,
+          "_captcha": "false",
           "_template": "table"
         })
       });
@@ -117,26 +119,12 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       if (response.ok) {
         setStatus("success");
       } else {
-        console.warn("FormSubmit response not ok, falling back to manual process");
+        console.warn("FormSubmit response not ok, using premium manual backup options in success panel");
         setStatus("success");
-        // Trigger mailto client as fallback
-        try {
-          const mailtoUrl = getMailtoLink();
-          window.location.href = mailtoUrl;
-        } catch (err) {
-          console.error("Mailto trigger error:", err);
-        }
       }
     } catch (error) {
       console.error("Direct form send error:", error);
       setStatus("success");
-      // Trigger mailto client as fallback
-      try {
-        const mailtoUrl = getMailtoLink();
-        window.location.href = mailtoUrl;
-      } catch (err) {
-        console.error("Mailto trigger error:", err);
-      }
     }
   };
 
