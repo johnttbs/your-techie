@@ -38,7 +38,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       `Best regards,\n` +
       `${formData.fullName}`
     );
-    return `mailto:yourtechiehub@qmail.com?subject=${subject}&body=${body}`;
+    return `mailto:yourtechiehub@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const getPlainTextDetails = () => {
@@ -52,7 +52,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       `WhatsApp/Telegram: ${formData.telegram}\n` +
       `Referred By: ${formData.referredBy || "None"}\n` +
       `------------------------------------\n` +
-      `Recipient Support Inbox: yourtechiehub@qmail.com`
+      `Recipient Support Inbox: yourtechiehub@gmail.com`
     );
   };
 
@@ -96,7 +96,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
     setStatus("loading");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/yourtechiehub@qmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/yourtechiehub@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -180,7 +180,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
             </div>
             <h3 className="text-2.5xl font-black text-brand-navy font-display mb-2">🎉 Registration Sent!</h3>
             <p className="text-gray-500 text-xs sm:text-sm leading-relaxed max-w-sm mb-6 font-sans">
-              Thank you, <span className="font-bold text-brand-navy">{formData.fullName}</span>! Your enrollment details have been sent directly to <strong className="text-brand-orange">yourtechiehub@qmail.com</strong>. Our cohort advisor will reach out to you via WhatsApp shortly.
+              Thank you, <span className="font-bold text-brand-navy">{formData.fullName}</span>! Your enrollment details have been sent directly to <strong className="text-brand-orange">yourtechiehub@gmail.com</strong>. Our cohort advisor will reach out to you via WhatsApp shortly.
             </p>
 
             {/* Practical Mail Trigger Box */}
@@ -218,7 +218,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
               </div>
 
               <p className="text-[10px] text-gray-400 font-sans leading-relaxed">
-                If you ever need to follow up manually, click <strong>Open Mail Application</strong> or copy the details to email <span className="text-brand-navy font-semibold underline">yourtechiehub@qmail.com</span>. We review and admit new student requests daily.
+                If you ever need to follow up manually, click <strong>Open Mail Application</strong> or copy the details to email <span className="text-brand-navy font-semibold underline">yourtechiehub@gmail.com</span>. We review and admit new student requests daily.
               </p>
             </div>
 

@@ -133,7 +133,7 @@ export default function FAQ() {
             </div>
           </div>
           <a
-            href="mailto:yourtechiehub@qmail.com"
+            href="mailto:yourtechiehub@gmail.com"
             className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange bg-brand-orange/10 hover:bg-brand-orange hover:text-white border border-brand-orange/20 px-5 py-3 rounded-xl transition-all whitespace-nowrap active:scale-95"
           >
             <span>Ask Support</span>

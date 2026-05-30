@@ -77,7 +77,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <span className="block font-bold text-white text-[11px] leading-tight uppercase font-mono">OFFICIAL MAIL</span>
-                  <a href="mailto:yourtechiehub@qmail.com" className="block hover:text-brand-orange transition-colors">yourtechiehub@qmail.com</a>
+                  <a href="mailto:yourtechiehub@gmail.com" className="block hover:text-brand-orange transition-colors">yourtechiehub@gmail.com</a>
                 </div>
               </div>
 
