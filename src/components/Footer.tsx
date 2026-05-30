@@ -1,89 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "./Logo";
 import { Mail, Phone, ExternalLink, Linkedin, Facebook, Instagram, Music2 } from "lucide-react";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "success" | "loading">("idle");
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setNewsletterStatus("loading");
-
-    try {
-      await fetch("https://formsubmit.co/ajax/yourtechiehub@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          "Action": "Newsletter Subscription request",
-          "Subscriber Email": email,
-          "_subject": `[Newsletter Signup] New subscriber: ${email}`,
-          "_template": "box"
-        })
-      });
-      setNewsletterStatus("success");
-      setEmail("");
-    } catch (err) {
-      console.error("Newsletter direct submission failed:", err);
-      // Fallback instantly to success state so user has premium experience regardless
-      setNewsletterStatus("success");
-      setEmail("");
-    }
-  };
-
   return (
     <footer id="footer" className="bg-[#02022D] border-t border-white/5 text-white/80 selection:bg-brand-orange">
-      
-      {/* UPPER Newsletter segment (Schull footer Section 11 equivalent) */}
-      <div className="border-b border-white/5 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-brand-navy border border-white/5 p-8 rounded-3xl relative overflow-hidden shadow-lg">
-            
-            <div className="lg:col-span-6 text-center lg:text-left">
-              <span className="text-brand-orange text-xs font-bold uppercase tracking-wider font-mono">STAY UPDATED</span>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white mt-1 font-display">
-                Subscribe to our Newsletter
-              </h3>
-              <p className="text-white/60 text-xs sm:text-sm mt-1 font-sans">
-                Be the first to hear about recruitment cohorts, local scholarships, and tech insights.
-              </p>
-            </div>
-
-            <div className="lg:col-span-6">
-              {newsletterStatus === "success" ? (
-                <div className="p-4 bg-brand-orange/10 border border-brand-orange/30 rounded-xl text-center text-brand-orange text-xs sm:text-sm font-bold animate-pulse">
-                  🎉 Thank you! You have successfully subscribed to the Your Techie Hub newsletter.
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your professional email address"
-                    className="flex-1 bg-white/5 border border-white/10 hover:border-white/20 focus:border-brand-orange rounded-xl px-4 py-3.5 text-xs sm:text-sm text-white placeholder-white/40 focus:outline-none transition-all font-sans"
-                    disabled={newsletterStatus === "loading"}
-                  />
-                  <button
-                    type="submit"
-                    className="px-6 py-3.5 bg-brand-orange hover:bg-brand-orange/90 text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all whitespace-nowrap disabled:opacity-50 active:scale-95"
-                    disabled={newsletterStatus === "loading"}
-                  >
-                    {newsletterStatus === "loading" ? "Subscribing..." : "Subscribe Now"}
-                  </button>
-                </form>
-              )}
-            </div>
-
-          </div>
-        </div>
-      </div>
-
       {/* MID PANEL: Grid details */}
       <div className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12">

@@ -36,20 +36,20 @@ export default function AboutUs() {
             </div>
           </div>
 
-          {/* Middle Panel: Founder Spotlight Portrait Card using the newly uploaded picture */}
+          {/* Middle Panel: Founder Spotlight Portrait Card with the uploaded picture */}
           <div 
-            className="lg:col-span-4 rounded-3xl overflow-hidden relative group shadow-xl border border-gray-100 bg-[#121212] min-h-[420px] flex flex-col justify-end select-none"
+            className="lg:col-span-4 rounded-3xl overflow-hidden relative group shadow-xl border border-gray-100 bg-[#0B0F19] min-h-[420px] flex flex-col justify-end select-none"
           >
             {/* Image of Mary Ajayi - referenced securely with referrerPolicy */}
             <img
-              src="/src/assets/images/mary_ajayi_who_we_are.png"
+              src="/src/assets/images/mary1.png"
               alt="Mary Ajayi - Founder of Your Techie Hub"
               referrerPolicy="no-referrer"
               className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105"
             />
             
             {/* Elegant overlay gradient to guarantee rich text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#02022D]/95 via-[#02022D]/30 to-transparent pointer-events-none z-10" />
             
             {/* Contact or status indicator */}
             <div className="absolute top-4 left-4 z-20">
@@ -61,7 +61,7 @@ export default function AboutUs() {
 
             {/* Card Information */}
             <div className="p-6 z-10 text-white relative">
-              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest bg-brand-orange/20 border border-brand-orange/30 px-2.5 py-0.5 rounded-md inline-block mb-2 font-mono">
+              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest bg-brand-orange/20 border border-brand-orange/30 px-2.5 py-0.5 rounded-md inline-block mb-3 font-mono">
                 Leadership
               </span>
               
@@ -73,7 +73,7 @@ export default function AboutUs() {
               </p>
 
               {/* Founder description line */}
-              <p className="text-[11px] text-white/70 leading-relaxed font-sans line-clamp-2">
+              <p className="text-[11px] text-white/70 leading-relaxed font-sans">
                 Driving elite educational standards and solid practical DevOps/Cloud training pathways at Your Techie Hub.
               </p>
             </div>

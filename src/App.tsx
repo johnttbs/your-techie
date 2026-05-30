@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import AboutUs from "./components/AboutUs";
-import PictureGallery from "./components/PictureGallery";
 import FocusAreas from "./components/FocusAreas";
 import FutureGoals from "./components/FutureGoals";
 import AlumniNetwork from "./components/AlumniNetwork";
@@ -12,6 +11,7 @@ import SuccessStories from "./components/SuccessStories";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import SignupModal from "./components/SignupModal";
+import { generateSyllabusPDF } from "./utils/pdfGenerator";
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,11 +21,11 @@ export default function App() {
   };
 
   const handleDownloadSyllabus = () => {
-    setIsModalOpen(true);
+    generateSyllabusPDF();
   };
 
   const handleExploreFocus = () => {
-    const focusSec = document.getElementById("focus-areas");
+    const focusSec = document.getElementById("syllabus");
     if (focusSec) {
       const offset = 95;
       const elementPosition = focusSec.getBoundingClientRect().top;
@@ -53,9 +53,6 @@ export default function App() {
         {/* Detailed Wholesome Presentation of slide 2 & 3 content */}
         <AboutUs />
 
-        {/* Premium Interactive Photo Gallery of real classroom and leadership pictures */}
-        <PictureGallery />
-
         {/* Specialized Tracks Focus (Slide 4 content) */}
         <FocusAreas />
 
@@ -78,7 +75,7 @@ export default function App() {
         <FAQ />
       </main>
 
-      {/* Lead generation newsletter input & Full detailed footer links */}
+      {/* Full detailed footer links */}
       <Footer />
 
       {/* Overarching signup popup modal */}

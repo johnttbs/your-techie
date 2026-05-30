@@ -47,28 +47,17 @@ export default function Navbar({ onRegisterClick }: NavbarProps) {
     <header className="fixed top-0 left-0 right-0 z-50 w-full" id="site-header">
       {/* Dynamic Announcement Bar */}
       <div className="bg-brand-orange text-white text-xs font-semibold py-2 px-4 flex justify-between items-center relative overflow-hidden transition-all duration-300">
-        <div className="absolute inset-0 bg-white/10 animate-pulse pointer-events-none" />
+        <div className="absolute inset-0 bg-white/10 pointer-events-none" />
         <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-center gap-2 text-center text-[11px] sm:text-xs tracking-wide">
           <span className="flex items-center gap-1.5 font-medium">
             <Rocket className="w-3.5 h-3.5 text-yellow-200 animate-bounce" />
-            Get tech insights, career tips &amp; digital skills updates from Your Techie Hub.
+            Enrollment is currently open! Join our next practical Cloud &amp; DevOps Engineering cohort.
           </span>
           <button
-            onClick={() => {
-              const element = document.querySelector("#footer");
-              if (element) {
-                const offset = 90;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: "smooth",
-                });
-              }
-            }}
+            onClick={onRegisterClick}
             className="inline-flex items-center gap-1 text-[10px] sm:text-xs uppercase bg-white text-brand-navy hover:bg-brand-navy hover:text-white px-2.5 py-0.5 rounded-full font-bold transition-all duration-300 shadow-sm border border-transparent whitespace-nowrap active:scale-95"
           >
-            Join Our Newsletter
+            Enroll Now
             <ChevronRight className="w-3 h-3" />
           </button>
         </div>
